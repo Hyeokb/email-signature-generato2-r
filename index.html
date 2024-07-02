@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 서명 생성기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        h1 {
+            color: #e62b24;
+        }
+        .signature-preview {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #e62b24;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function generateSignature() {
+            const name = document.getElementById('name').value;
+            const position = document.getElementById('position').value;
+            const team = document.getElementById('team').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+
+            const signatureHTML = `
+                <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+                    <div style="font-size: 24px; font-weight: bold; color: #e62b24;">OLIMPLANET</div>
+                    <div style="font-size: 18px; font-weight: bold;">${name}</div>
+                    <div>${position}</div>
+                    <div>${team}</div>
+                    <div><strong>M.</strong> ${phone} <strong>E.</strong> <a href="mailto:${email}">${email}</a></div>
+                    <div>(주)올림플래닛 +82 2 1544 6517 | 서울특별시 강남구 봉은사로 524, 인터컨티넨탈 서울 코엑스 201호-301호</div>
+                    <div>OLIMPLANET INC. | #201-301, 524, Bongeunsa-ro, Gangnam-gu, Seoul, Korea</div>
+                    <div>
+                        <a href="http://olimplanet.com" style="color: #e62b24;">olimplanet.com</a> |
+                        <a href="http://elypecs.com" style="color: #e62b24;">ELYPECS.com</a> |
+                        <a href="http://xromeda.com" style="color: #e62b24;">XROMEDA.com</a> |
+                        <a href="http://xroo.io" style="color: #e62b24;">XROO.io</a>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('signature-output').innerHTML = signatureHTML;
+            document.getElementById('signature-code').textContent = signatureHTML;
+        }
+
+        function copyToClipboard() {
+            const copyText = document.getElementById('signature-code');
+            const textArea = document.createElement('textarea');
+            textArea.value = copyText.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            alert('서명 HTML이 클립보드에 복사되었습니다.');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>HTML 서명 생성기</h1>
+        <p>아래 정보를 입력하고 "서명 생성" 버튼을 클릭하세요.</p>
+        <div>
+            <label for="name">이름:</label><br>
+            <input type="text" id="name" placeholder="권혁빈"><br><br>
+            <label for="position">직책:</label><br>
+            <input type="text" id="position" placeholder="Pro"><br><br>
+            <label for="team">부서:</label><br>
+            <input type="text" id="team" placeholder="OL 전사협의체 인사총무실 인사팀 인사"><br><br>
+            <label for="phone">전화번호:</label><br>
+            <input type="text" id="phone" placeholder="+82 10 4888 7424"><br><br>
+            <label for="email">이메일:</label><br>
+            <input type="email" id="email" placeholder="hbkwon@olimplanet.com"><br><br>
+            <button class="btn" onclick="generateSignature()">서명 생성</button>
+        </div>
+        <div class="signature-preview" id="signature-output"></div>
+        <pre id="signature-code" style="white-space: pre-wrap; word-wrap: break-word;"></pre>
+        <button class="btn" onclick="copyToClipboard()">HTML 복사</button>
+    </div>
+</body>
+</html>
