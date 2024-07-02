@@ -31,38 +31,6 @@
             font-size: 14px;
             line-height: 1.6;
         }
-        .signature-preview .header {
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        .signature-preview .logo {
-            width: 120px;
-            margin-bottom: 10px;
-        }
-        .signature-preview .name {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-        }
-        .signature-preview .position, .signature-preview .team {
-            color: #666;
-            margin-bottom: 10px;
-        }
-        .signature-preview .contact {
-            margin-top: 10px;
-        }
-        .signature-preview .contact strong {
-            color: #333;
-        }
-        .signature-preview .footer {
-            margin-top: 20px;
-            color: #333;
-        }
-        .signature-preview .footer a {
-            color: #e62b24;
-            text-decoration: none;
-            margin-right: 10px;
-        }
         .btn {
             display: inline-block;
             padding: 10px 20px;
@@ -84,25 +52,15 @@
             const email = document.getElementById('email').value;
 
             const signatureHTML = `
-                <div class="signature-preview">
-                    <img src="https://mail.google.com/mail/u/0?ui=2&ik=84f653acd9&attid=0.1&permmsgid=msg-f:1802812932500753628&th=1904e0cf76300cdc&view=fimg&fur=ip&sz=s0-l75-ft&attbid=ANGjdJ-Hucf089Gu8k--4pr4PHiGiajejAfZZg6oRytfh3yburtdoZwGyCsWSQrBKS2x1coKYkf5ENc7DhqhgjjIHBfMber3DMPF6KJBETt5lxWWdzy4rN_H8nwkXOo&disp=emb&realattid=ii_lxo2d6v01" alt="OLIMPLANET" class="logo">
-                    <div class="name">${name}</div>
-                    <div class="position">${position}</div>
-                    <div class="team">${team}</div>
-                    <div class="contact">
-                        <strong>M.</strong> ${phone} <strong>E.</strong> <a href="mailto:${email}">${email}</a>
-                    </div>
-                    <div class="footer">
-                        <div>(주)올림플래닛 +82 2 1544 6517 | 서울특별시 강남구 봉은사로 524, 인터컨티넨탈 서울 코엑스 201호-301호</div>
-                        <div>OLIMPLANET INC. | #201-301, 524, Bongeunsa-ro, Gangnam-gu, Seoul, Korea</div>
-                        <div>
-                            <a href="http://olimplanet.com">olimplanet.com</a> |
-                            <a href="http://elypecs.com">ELYPECS.com</a> |
-                            <a href="http://xromeda.com">XROMEDA.com</a> |
-                            <a href="http://xroo.io">XROO.io</a>
-                        </div>
-                    </div>
-                </div>
+                <p>
+                    ${name} / ${position} ${team} | ${phone} E. <a href="mailto:${email}">${email}</a> 
+                    (주)올림플래닛 | +82 2 1544 6517 | 서울특별시 강남구 봉은사로 524, 인터컨티넨탈 서울 코엑스 201호·301호 
+                    OLIMPLANET INC. | #201·301, 524, Bongeunsa-ro, Gangnam-gu, Seoul, Korea 
+                    <a href="http://olimplanet.com">olimplanet.com</a> | 
+                    <a href="http://elypecs.com">ELYPECS.com</a> | 
+                    <a href="http://xromeda.com">XROMEDA.com</a> | 
+                    <a href="http://xroo.io">XROO.io</a>
+                </p>
             `;
 
             document.getElementById('signature-output').innerHTML = signatureHTML;
